@@ -44,7 +44,9 @@ class strength_analysis:
             L_90s_00s[i] = self.decrease_90s_00s[i] / self.years_90s_00s / self.category_90s[i] * 100
         U1 = np.sum(self.increase_80s_90s) / sum(self.category_80s) / self.years_80s_90s * 100
         U2 = np.sum(self.increase_90s_00s) / sum(self.category_90s) / self.years_90s_00s * 100
-        return G_80s_90s, G_90s_00s, L_80s_90s, L_90s_00s, U1, U2
+        U3 = np.sum(self.decrease_80s_90s) / sum(self.category_80s) / self.years_80s_90s * 100
+        U4 = np.sum(self.decrease_90s_00s) / sum(self.category_90s) / self.years_90s_00s * 100
+        return G_80s_90s, G_90s_00s, L_80s_90s, L_90s_00s, U1, U2, U3, U4
 
     def area_GL(self):
         G_80s_90s = np.empty((5, 1), dtype='double')

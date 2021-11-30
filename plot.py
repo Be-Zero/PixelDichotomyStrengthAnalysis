@@ -18,6 +18,7 @@ plt.xlim(0, 5)
 plt.xticks([1, 3], ['80s-90s', '90s-00s'])
 plt.bar([1, 3], [S_80s_90s, S_90s_00s], color=['blue', 'green'], width=0.7)
 plt.tight_layout()
+# plt.show()
 
 # plot 2
 S_80s_90s, S_90s_00s, U = SA.S_U()
@@ -31,7 +32,7 @@ plt.bar([1, 3], [S_80s_90s, S_90s_00s], color=['blue', 'green'], width=0.7)
 plt.axhline(U, linestyle='--', c='red', label=str(U))
 plt.legend(fontsize=8)
 plt.tight_layout()
-plt.show()
+# plt.show()
 
 # plot 3
 plt.clf()
@@ -47,7 +48,7 @@ plt.tight_layout()
 # plt.show()
 
 # plot 4
-G_80s_90s, G_90s_00s, L_80s_90s, L_90s_00s, U1, U2 = SA.GL()
+G_80s_90s, G_90s_00s, L_80s_90s, L_90s_00s, U1, U2, U3, U4 = SA.GL()
 plt.subplot(1, 2, 2)
 plt.title('80s-90s increase rate')
 plt.xlabel("class") # 变化率
@@ -74,7 +75,7 @@ plt.tight_layout()
 # plt.show()
 
 # plot 6
-G_80s_90s, G_90s_00s, L_80s_90s, L_90s_00s, U1, U2 = SA.GL()
+G_80s_90s, G_90s_00s, L_80s_90s, L_90s_00s, U1, U2, U3, U4 = SA.GL()
 plt.subplot(1, 2, 2)
 plt.title('90s-00s increase rate')
 plt.xlabel("class") # 变化率
@@ -82,7 +83,7 @@ plt.ylabel("rate") # 变化面积
 plt.xlim(0, 6)
 plt.xticks([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])
 plt.bar([1, 2, 3, 4, 5], G_90s_00s, color=['blue', 'green'], width=0.5)
-plt.axhline(U1, linestyle='--', c = 'red', label=str(U1))
+plt.axhline(U1, linestyle='--', c = 'red', label=str(U2))
 plt.legend(fontsize=8)
 plt.tight_layout()
 plt.show()
@@ -101,7 +102,7 @@ plt.tight_layout()
 # plt.show()
 
 # plot 8
-G_80s_90s, G_90s_00s, L_80s_90s, L_90s_00s, U1, U2 = SA.GL()
+G_80s_90s, G_90s_00s, L_80s_90s, L_90s_00s, U1, U2, U3, U4 = SA.GL()
 plt.subplot(1, 2, 2)
 plt.title('80s-90s decrease rate')
 plt.xlabel("class") # 变化率
@@ -109,7 +110,7 @@ plt.ylabel("rate") # 变化面积
 plt.xlim(0, 6)
 plt.xticks([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])
 plt.bar([1, 2, 3, 4, 5], L_80s_90s, color=['blue', 'green'], width=0.5)
-plt.axhline(U2, linestyle='--', c = 'red', label=str(U2))
+plt.axhline(U2, linestyle='--', c = 'red', label=str(U3))
 plt.legend(fontsize=8)
 plt.tight_layout()
 plt.show()
@@ -128,7 +129,7 @@ plt.tight_layout()
 # plt.show()
 
 # plot 10
-G_80s_90s, G_90s_00s, L_80s_90s, L_90s_00s, U1, U2 = SA.GL()
+G_80s_90s, G_90s_00s, L_80s_90s, L_90s_00s, U1, U2, U3, U4 = SA.GL()
 plt.subplot(1, 2, 2)
 plt.title('90s-00s decrease rate')
 plt.xlabel("class") # 变化率
@@ -136,7 +137,7 @@ plt.ylabel("rate") # 变化面积
 plt.xlim(0, 6)
 plt.xticks([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])
 plt.bar([1, 2, 3, 4, 5], L_90s_00s, color=['blue', 'green'], width=0.5)
-plt.axhline(U2, linestyle='--', c = 'red', label=str(U2))
+plt.axhline(U2, linestyle='--', c = 'red', label=str(U4))
 plt.legend(fontsize=8)
 plt.tight_layout()
 plt.show()
