@@ -2,3 +2,4 @@
 .gitattributes
 first_demo/dataset/*
 data
+strength_analysis.pyc
