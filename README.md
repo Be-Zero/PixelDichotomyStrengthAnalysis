@@ -2,7 +2,7 @@
 
 ## 一、数据集
 
-ISLSCP II GIMMS 月度 NDVI 数据集：https://daac.ornl.gov/ISLSCP_II/guides/gimms_ndvi_monthly_xdeg.html
+ISLSCP II GIMMS 月度 NDVI 数据集：[点我](https://daac.ornl.gov/ISLSCP_II/guides/gimms_ndvi_monthly_xdeg.html)
 
 * 涵盖了 1981.07 ——2002.12 的数据；
 * 该数据集包含三个数据文件，分别以 0.25 、0.5 、1.0 度的经纬度空间分辨率提供；
@@ -10,12 +10,12 @@ ISLSCP II GIMMS 月度 NDVI 数据集：https://daac.ornl.gov/ISLSCP_II/guides/g
 * 数据集空间范围：全局网格
 * 经度范围：-180 W —— 180 E ；
 * 纬度范围：-90 S —— 90 N ；
-* 数据获取地址：https://search.earthdata.nasa.gov/search/granules?p=C179002875-ORNL_DAAC&pg[0][v]=f&pg[0][gsk]=-start_date&q=gimms&tl=1637818931.017!3!! ；
+* 数据获取地址：[点我](https://search.earthdata.nasa.gov/search/granules?p=C179002875-ORNL_DAAC&pg[0][v]=f&pg[0][gsk]=-start_date&q=gimms&tl=1637818931.017!3!!) ；
 * 文件类型：.asc 文件；
 * 本实例选择了精度为 0.25 度的数据集；
 * 数据中含有负值，-99 表示水体，-88 表示缺失值，-77 表示永久冰值。
 
-Arcgis 的学习建议参考官方文档：https://resources.arcgis.com/zh-cn/help/ 。
+Arcgis 的学习建议参考官方文档：[点我](https://resources.arcgis.com/zh-cn/help/) 。
 
 原始数据展示：
 
