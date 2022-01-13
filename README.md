@@ -19,7 +19,7 @@ Arcgis 的学习建议参考官方文档：[点我](https://resources.arcgis.com
 
 原始数据展示：
 
-![原始图像展示](https://github.com/Be-Zero/vegetation_coverage/blob/main/picture/1.png)
+![原始图像展示](picture/1.png)
 
 ## 二、数据处理流程
 
@@ -99,7 +99,7 @@ print "ALL DONE"
 
 转换后的数据展示：
 
-![转换后的数据](https://github.com/Be-Zero/vegetation_coverage/blob/main/picture/2.png)
+![转换后的数据](picture/2.png)
 
 可以发现没什么区别。
 
@@ -191,7 +191,7 @@ print "OK!"
 
 植被覆盖度图像如下：
 
-![植被覆盖度图像](https://github.com/Be-Zero/vegetation_coverage/blob/main/picture/3.png)
+![植被覆盖度图像](picture/3.png)
 
 可以发现，它的颜色变浅了一些。
 
@@ -235,7 +235,7 @@ print "ok!"
 
 截取中国后的图像：
 
-![截取中国后的图像](https://github.com/Be-Zero/vegetation_coverage/blob/main/picture/4.png)
+![截取中国后的图像](picture/4.png)
 
 ### 5. 提取年代数据
 
@@ -274,7 +274,7 @@ print "ok!"
 
 提取年代数据后的图像：
 
-![提取年代数据后的图像](https://github.com/Be-Zero/vegetation_coverage/blob/main/picture/5.png)
+![提取年代数据后的图像](picture/5.png)
 
 ### 6. 划分等级
 
@@ -336,7 +336,7 @@ out3.save(out_path3)
 
 划分等级后的图像：
 
-![划分等级后的图像](https://github.com/Be-Zero/vegetation_coverage/blob/main/picture/6.png)
+![划分等级后的图像](picture/6.png)
 
 ### 7. 计算转移矩阵
 
@@ -356,7 +356,7 @@ out3.save(out_path3)
 
 * 点击：`Tools/Color Mapping/Density Slice` ；
 
-  ![7](https://github.com/Be-Zero/vegetation_coverage/blob/main/picture/7.png)
+  ![7](picture/7.png)
 
 * 点击 `ok` ；
 
@@ -370,11 +370,11 @@ out3.save(out_path3)
 
 * 点击 `Apply` ；
 
-  ![8](https://github.com/Be-Zero/vegetation_coverage/blob/main/picture/8.png)
+  ![8](picture/8.png)
 
 * 点击 `File/Output Ranges to Class Image` ；
 
-  ![9](https://github.com/Be-Zero/vegetation_coverage/blob/main/picture/9.png)
+  ![9](picture/9.png)
 
 * 输入保存路径保存图片。
 
@@ -452,7 +452,7 @@ $U$ 为时间 Intensity analysis 均值线的值。
 
 下图展示了两个时段的面积变化和面积变化速率，左图 x 轴表示时段，y 轴表示年平均面积变化量，右图 y 轴表示年平均面积变化速率百分比，红色的虚线为均值线，可以看出：中国植被覆盖度在 1980s — 1990s 的变化面积和变化速率均小于 1990s — 2000s。
 
-![10](https://github.com/Be-Zero/vegetation_coverage/blob/main/picture/10.png)
+![10](picture/10.png)
 
 ### 2. 层面二
 
@@ -468,13 +468,13 @@ $$
 
 下面的图像展示了两个时段的植被覆盖度等级变化规律，左图 x 轴表示植被覆盖等级，y 轴表示年平均变化面积，右图 x 轴表示植被覆盖等级，y 轴表示面积变化速率百分比，红色的虚线表示均值线 。均值线以下表示强度变化平缓，反之表示强度变化活跃。
 
-![11](https://github.com/Be-Zero/vegetation_coverage/blob/main/picture/11.png)
+![11](picture/11.png)
 
-![12](https://github.com/Be-Zero/vegetation_coverage/blob/main/picture/12.png)
+![12](picture/12.png)
 
-![13](https://github.com/Be-Zero/vegetation_coverage/blob/main/picture/13.png)
+![13](picture/13.png)
 
-![14](https://github.com/Be-Zero/vegetation_coverage/blob/main/picture/14.png)
+![14](picture/14.png)
 
 ### 3. 层面三
 
