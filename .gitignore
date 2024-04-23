@@ -1,5 +1,7 @@
 .idea
 .gitattributes
 first_demo/dataset/*
-data
+/data/*
 strength_analysis.pyc
+__pycache__
+!/data/1/

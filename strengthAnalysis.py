@@ -2,97 +2,9 @@
 import os
 from copy import deepcopy
 
-import matplotlib.pyplot as plt
 import numpy as np
-from mpl_toolkits.axes_grid1 import ImageGrid
 from osgeo import gdal
 
-
-def draw_change_color(a,b,c,save_path):
-
-    # a = np.random.randint(0, 5, [256, 256], dtype=np.uint8)
-    # b = np.random.randint(0, 5, [256, 256], dtype=np.uint8)
-    a = a.reshape(128,128)
-    b = b.reshape(128,128)
-    c = c.reshape(128, 128)
-    delta1 = b.astype(np.int32)-a.astype(np.int32)
-    delta2 = c.astype(np.int32)-b.astype(np.int32)
-
-
-    # Set up figure and image grid
-    fig = plt.figure(figsize=(16, 8))
-    grid = ImageGrid(fig, 111,
-                    nrows_ncols=(1,3),
-                    axes_pad=0.15,
-                    share_all=True,
-                    cbar_location="right",
-                    cbar_mode="single",
-                    cbar_size="7%",
-                    cbar_pad=0.15,
-                    )
-
-    # Add data to image grid
-    axLst = []
-    imgLst = [a, b, c]
-    for ax in grid:
-        axLst.append(ax)
-
-    for i in range(len(axLst)):
-        im = axLst[i].imshow(imgLst[i], vmin=0, vmax=4, cmap='Greens')
-        axLst[i].set_xticks([])
-        axLst[i].set_yticks([])
-        axLst[i].axis('off')
-
-    # Colorbar
-    ax.cax.colorbar(im)
-    ax.cax.toggle_label(True)
-    ax.cax.spines['top'].set_visible(False)
-    ax.cax.spines['right'].set_visible(False)
-    ax.cax.spines['bottom'].set_visible(False)
-    ax.cax.spines['left'].set_visible(False)
-    # cb.outline.set_visible(False)
-    plt.savefig(save_path+"qianhou.png")
-
-    plt.clf()
-    # Set up figure and image grid
-    fig = plt.figure(figsize=(10, 8))
-    grid = ImageGrid(fig, 111,
-                    nrows_ncols=(1,2),
-                    axes_pad=0.15,
-                    share_all=True,
-                    cbar_location="right",
-                    cbar_mode="single",
-                    cbar_size="7%",
-                    cbar_pad=0.15,
-                    )
-
-    # Add data to image grid
-    axLst = []
-    imgLst = [delta1, delta2]
-    for ax in grid:
-        axLst.append(ax)
-
-    for i in range(len(axLst)):
-        im = axLst[i].imshow(imgLst[i], vmin=-4, vmax=4, cmap='bwr')
-        axLst[i].set_xticks([])
-        axLst[i].set_yticks([])
-        axLst[i].axis('off')
-
-    # Colorbar
-    ax.cax.colorbar(im)
-    ax.cax.toggle_label(True)
-    ax.cax.spines['top'].set_visible(False)
-    ax.cax.spines['right'].set_visible(False)
-    ax.cax.spines['bottom'].set_visible(False)
-    ax.cax.spines['left'].set_visible(False)
-    # cb.outline.set_visible(False)
-    plt.savefig(save_path+"bianhua.png")
-    plt.clf()
-
-a = gdal.Open('./data/6/reclass/2018.tif').ReadAsArray()
-b = gdal.Open('./data/6/reclass/2020.tif').ReadAsArray()
-c = gdal.Open('./data/6/reclass/2022.tif').ReadAsArray()
-draw_change_color(a, b, c, './data/6/mmp/')
 
 class strengthAnalysis:
     # init
@@ -118,8 +30,8 @@ class strengthAnalysis:
             
             for i in range(self.n-1):
                 self.files[i] = self.files[i][:-4] + '_' + self.files[i+1][:-4]
-            #self.files = np.array(self.files[:-1])
-            
+            self.files = self.files[:-1]
+            # self.files = np.array(self.files[:-1])
             self.rate = self.writeChange(reclass_path, change_path)
 
             # 初始状态
@@ -210,7 +122,7 @@ class strengthAnalysis:
         del pdata
         for i, v in enumerate(data):
             if q_95 - v != 0:
-                data[i] = (v - q_5) / (q_95 - v)
+                data[i] = (v - q_5) / (q_95 - q_5)
             else:
                 data[i] = 1
         return data
@@ -263,17 +175,16 @@ class strengthAnalysis:
             l = 0.0
             c = 0.0
             g = 0.0
-            draw_change_color(data,next,change_path + self.files[i])
             for j, v in enumerate(data):
                 if v < next[j]:
                     change.append(1)  # 增加
-                    g += 255
+                    g += 1
                 elif v == next[j]:
                     change.append(0)  # 不变
-                    c += 127
+                    c += 1
                 else:
                     change.append(2)  # 减少
-                    l += 0
+                    l += 1
             change = np.array(change, dtype=np.int8)
             self.write_img(change_path + self.files[i] + '.tif', proj, geotrans, change.reshape(width, height))
             rate.append([c / (c + g + l), g / (c + g + l), l / (c + g + l)])
@@ -340,10 +251,8 @@ class strengthAnalysis:
             tmpG = np.empty((5, 1), dtype='float')
             tmpL = np.empty((5, 1), dtype='float')
             for j in range(5):
-                tmpG[j] = self.increase[i][j] / \
-                    (int(self.files[i][5:9]) - int(self.files[i][0:4])) / self.category[i+1][j] * 100
-                tmpL[j] = self.decrease[i][j] / \
-                    (int(self.files[i][5:9]) - int(self.files[i][0:4])) / self.category[i][j] * 100
+                tmpG[j] = self.increase[i][j] / (int(self.files[i][5:9]) - int(self.files[i][0:4])) / self.category[i+1][j] * 100
+                tmpL[j] = self.decrease[i][j] / (int(self.files[i][5:9]) - int(self.files[i][0:4])) / self.category[i][j] * 100
             G.append(tmpG)
             L.append(tmpL)
         for i in range(self.n-1):
